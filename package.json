@@ -1,0 +1,31 @@
+{
+  "author": "Kevin Whitman (https://github.com/keverw)",
+  "name": "node_CloudFlare",
+  "description": "A simple module to check if CloudFlare is connecting and get the real IP address.",
+  "version": "0.0.1",
+  "keywords": [
+    "IP Address",
+    "CIDR",
+    "V4",
+    "V6",
+    "vaild",
+    "range",
+    "addr",
+    "ip",
+    "ipv4",
+    "ipv6",
+	"CloudFlare",
+	"Cloud",
+	"Cloud Flare",
+	"reserve proxy",
+	"proxy"
+  ],
+  "dependencies": {
+    "range_check": "0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keverw/node_CloudFlare"
+  },
+  "main": "node_CloudFlare.js"
+}
