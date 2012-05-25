@@ -1,12 +1,12 @@
 #node_CloudFlare#
 
-A simple module to check if CloudFlare is connecting and get the real IP address.
+A simple module to check if [CloudFlare](https://www.cloudflare.com/) is connecting and get the real IP address.
 
 ##Install##
 
     npm install node_cloudflare
 
-All lowercase! NPM is case sensitive
+All lowercase! NPM is case sensitive.
 
 ##Example##
 **Load config**
@@ -38,6 +38,9 @@ var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : 
 ```
 
 Check out `example.js` for a full working demo
+
+##Dependencies##
+Range Check - [https://github.com/keverw/range_check](https://github.com/keverw/range_check)
 
 ##Legal Stuffs##
 CloudFlare is an registered trademark of CloudFlare, Inc. This work is not endorsed by CloudFlare, Inc.
