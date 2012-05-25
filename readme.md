@@ -3,6 +3,7 @@
 A simple module to check if [CloudFlare](https://www.cloudflare.com/) is connecting and get the real IP address.
 
 ##Install##
+To install node_CloudFlare on your Node.js server use npm
 
     npm install node_cloudflare
 
