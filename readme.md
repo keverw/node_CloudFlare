@@ -15,7 +15,7 @@ cf.load(function (error, fs_error)
 {
 	if (fs_error)
 	{
-		throw new Error(err);
+		throw new Error(fs_error);
 	}
     server.listen(8880);
 	console.log('Server running.');
