@@ -4,13 +4,14 @@ A simple module to check if CloudFlare is connecting and get the real IP address
 
 ##Install##
 
-    npm install node_CloudFlare
+    npm install node_cloudflare
 
+All lowercase! NPM is case sensitive
 
 ##Example##
 **Load config**
 ```
-var cf = require('./node_CloudFlare.js');
+var cf = require('node_cloudflare');
 cf.load(function (error, fs_error)
 {
 	if (fs_error)
