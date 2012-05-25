@@ -3,24 +3,30 @@ var http = require('http');
 var cf = require('./node_CloudFlare.js');
 
 // Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response)
+var server = http.createServer(function (req, res)
 {
-    if (request.url === '/favicon.ico')
+    if (req.url === '/favicon.ico')
     { //Thank's https://gist.github.com/763822
-        response.writeHead(200, {
+        res.writeHead(200, {
             'Content-Type': 'image/x-icon'
         });
-        response.end();
+        res.end();
         return;
     }
 
-    response.writeHead(200, {
+    res.writeHead(200, {
         "Content-Type": "text/plain"
     });
 
-    console.log(cf.check(request, 'is'));
-    //console.log(cf.check(request, 'real'));
-    response.end("Hello World\n");
+	if (cf.check(req)) //CF
+	{
+		res.end(cf.get(req));
+	}
+	else //not CF
+	{
+		var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
+		res.end(ip_address);
+	}
 });
 
 cf.load(function (error, fs_error)
