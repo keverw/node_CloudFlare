@@ -26,7 +26,6 @@
 
     function check(req)
     {
-		console.log(ranges);
         var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
         if (typeof req.headers['cf-connecting-ip'] === 'undefined')
         {

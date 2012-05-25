@@ -18,13 +18,13 @@ var server = http.createServer(function (req, res)
         "Content-Type": "text/plain"
     });
 
+	var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
 	if (cf.check(req)) //CF
 	{
-		res.end(cf.get(req));
+		res.end('CF IP: ' + ip_address + '\nYour IP: ' + cf.get(req));
 	}
 	else //not CF
-	{
-		var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
+	{	
 		res.end(ip_address);
 	}
 });
