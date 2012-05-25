@@ -1,4 +1,7 @@
 #node_CloudFlare#
+
+**DO NOT USE - NOT READY FOR PRODUCTION**
+
 A simple module to check if CloudFlare is connecting and get the real IP address.
 
 ##Setup##
