@@ -11,7 +11,7 @@ ranges.v6 = v6;
 
 var file_contents = JSON.stringify(ranges);
 
-fs.writeFile('./ranges.json', file_contents, 'utf8', function (err)
+fs.writeFile(__dirname + '/ranges.json', file_contents, 'utf8', function (err)
 {
     if (err)
     {

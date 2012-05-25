@@ -10,7 +10,7 @@
     function load(callback) //Load the config
     {
         var fs = require('fs');
-        fs.readFile('./ranges.json', 'utf8', function (err, data)
+        fs.readFile(__dirname + '/ranges.json', 'utf8', function (err, data)
         {
             if (err)
             {
