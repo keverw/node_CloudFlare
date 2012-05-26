@@ -5,6 +5,14 @@ var cf = require('./node_CloudFlare.js');
 // Configure our HTTP server to respond with Hello World to all requests.
 var server = http.createServer(function (req, res)
 {
+	if (cf.check(req)) //CF
+    {
+		req.real_ip = cf.get(req);
+		req.connection.__defineGetter__('remoteAddress', function() {
+			return req.real_ip;
+		});
+	}
+	
     if (req.url === '/favicon.ico')
     { //Thank's https://gist.github.com/763822
         res.writeHead(200, {
@@ -19,14 +27,7 @@ var server = http.createServer(function (req, res)
     });
 
 	var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
-	if (cf.check(req)) //CF
-	{
-		res.end('CF IP: ' + ip_address + '\nYour IP: ' + cf.get(req));
-	}
-	else //not CF
-	{	
-		res.end(ip_address);
-	}
+	res.end('Your IP: ' + ip_address);
 });
 
 cf.load(function (error, fs_error)

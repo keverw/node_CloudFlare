@@ -38,7 +38,7 @@ var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : 
 	}
 ```
 
-Check out `example.js` for a full working demo
+Check out `example.js` for a another working exmaple that overrides the `req.connection.remoteAddress` getter. 
 
 ##Dependencies##
 Range Check - [https://github.com/keverw/range_check](https://github.com/keverw/range_check)
