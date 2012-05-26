@@ -1,8 +1,7 @@
-// Load the http module to create an http server.
 var http = require('http');
 var cf = require('./node_CloudFlare.js');
 
-// Configure our HTTP server to respond with Hello World to all requests.
+// Configure our HTTP server to respond with the users IP address.
 var server = http.createServer(function (req, res)
 {
     if (cf.check(req)) //CF
@@ -31,7 +30,7 @@ var server = http.createServer(function (req, res)
     res.end('Your IP: ' + ip_address);
 });
 
-cf.load(function (error, fs_error)
+cf.load(function (error, fs_error) //Loads the ranges and then starts the webserver.
 {
     if (fs_error)
     {
