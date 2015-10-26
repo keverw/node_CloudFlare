@@ -1,4 +1,4 @@
-#node_CloudFlare 0.0.2#
+#node_CloudFlare 0.0.3#
 
 A simple module to check if [CloudFlare](https://www.cloudflare.com/) is connecting and get the real IP address.
 
