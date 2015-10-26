@@ -1,79 +1,81 @@
-
-function isEmpty(obj)
+(function ()
 {
-	return Object.keys(obj).length === 0;
-}
-
-var ranges = {};
-
-function load(callback) //Load the config
-{
-	var fs = require('fs');
-	fs.readFile(__dirname + '/ranges.json', 'utf8', function (err, data)
+	function isEmpty(obj)
 	{
-		if (err)
+		return Object.keys(obj).length === 0;
+	}
+
+	var ranges = {};
+
+	function load(callback) //Load the config
+	{
+		var fs = require('fs');
+		fs.readFile(__dirname + '/ranges.json', 'utf8', function (err, data)
 		{
-			callback(true, err);
+			if (err)
+			{
+				callback(true, err);
+			}
+			else
+			{
+				ranges = JSON.parse(data);
+				callback(false, null);
+			}
+		});
+	}
+
+	function check(req)
+	{
+		var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
+		if (typeof req.headers['cf-connecting-ip'] === 'undefined')
+		{
+			return false;
 		}
 		else
 		{
-			ranges = JSON.parse(data);
-			callback(false, null);
-		}
-	});
-}
-
-function check(req)
-{
-	var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
-	if (typeof req.headers['cf-connecting-ip'] === 'undefined')
-	{
-		return false;
-	}
-	else
-	{
-		var range_check = require('range_check');
-		if (range_check.vaild_ip(ip_address))
-		{
-			var ip_ver = range_check.ver(ip_address);
-			if (ip_ver === 4)
+			var range_check = require('range_check');
+			if (range_check.vaild_ip(ip_address))
 			{
-				return range_check.in_range(ip_address, ranges.v4);
-			}
-			else if (ip_ver === 6)
-			{
-				return range_check.in_range(ip_address, ranges.v6);
+				var ip_ver = range_check.ver(ip_address);
+				if (ip_ver === 4)
+				{
+					return range_check.in_range(ip_address, ranges.v4);
+				}
+				else if (ip_ver === 6)
+				{
+					return range_check.in_range(ip_address, ranges.v6);
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
 				return false;
 			}
 		}
+	}
+
+	function get(req)
+	{
+		var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
+		if (typeof req.headers['cf-connecting-ip'] === 'undefined')
+		{
+			return ip_address;
+		}
 		else
 		{
-			return false;
+			return req.headers['cf-connecting-ip'];
 		}
 	}
-}
 
-function get(req)
-{
-	var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : req.remoteAddress);
-	if (typeof req.headers['cf-connecting-ip'] === 'undefined')
-	{
-		return ip_address;
-	}
-	else
-	{
-		return req.headers['cf-connecting-ip'];
-	}
-}
+	// Export public API
+	var node_CloudFlare = {};
 
-// Export public API
-var node_CloudFlare = {};
+	node_CloudFlare.load = load;
+	node_CloudFlare.check = check;
+	node_CloudFlare.get = get;
 
-node_CloudFlare.load = load;
-node_CloudFlare.check = check;
-node_CloudFlare.get = get;
-
-module.exports = node_CloudFlare;
+	module.exports = node_CloudFlare;
+}());
