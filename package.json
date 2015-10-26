@@ -21,11 +21,12 @@
 	"proxy"
   ],
   "dependencies": {
-    "range_check": "0.0.1"
+    "range_check": "1.x"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/keverw/node_CloudFlare"
   },
+  "license": "BSD",
   "main": "node_CloudFlare.js"
 }
