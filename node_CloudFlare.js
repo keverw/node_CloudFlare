@@ -34,16 +34,16 @@
 		else
 		{
 			var range_check = require('range_check');
-			if (range_check.vaild_ip(ip_address))
+			if (range_check.isIP(ip_address))
 			{
-				var ip_ver = range_check.ver(ip_address);
+				var ip_ver = range_check.version(ip_address);
 				if (ip_ver === 4)
 				{
-					return range_check.in_range(ip_address, ranges.v4);
+					return range_check.inRange(ip_address, ranges.v4);
 				}
 				else if (ip_ver === 6)
 				{
-					return range_check.in_range(ip_address, ranges.v6);
+					return range_check.inRange(ip_address, ranges.v6);
 				}
 				else
 				{
