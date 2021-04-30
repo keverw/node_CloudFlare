@@ -1,17 +1,17 @@
 [![Build Status](https://travis-ci.org/keverw/node_CloudFlare.svg)](https://travis-ci.org/keverw/node_CloudFlare)
 
-#node_CloudFlare 0.0.4#
+#node_CloudFlare 0.0.5
 
 A simple module to check if [CloudFlare](https://www.cloudflare.com/) is connecting and get the real IP address.
 
-##Install##
+##Install
 To install node_CloudFlare on your Node.js server use npm
 
     npm install node_cloudflare
 
 All lowercase! NPM is case sensitive.
 
-##Example##
+##Example
 **Load config**
 ```
 var cf = require('node_cloudflare');
@@ -42,10 +42,10 @@ var ip_address = (req.connection.remoteAddress ? req.connection.remoteAddress : 
 
 Check out `example.js` for a another working exmaple that overrides the `req.connection.remoteAddress` getter. 
 
-##Dependencies##
+##Dependencies
 Range Check - [https://github.com/keverw/range_check](https://github.com/keverw/range_check)
 
-##Legal Stuffs##
+##Legal Stuffs
 CloudFlare is an registered trademark of CloudFlare, Inc. This work is not endorsed by CloudFlare, Inc.
 
 Node.js is an registered trademark of Joyent. This work is not endorsed by Joyent.
