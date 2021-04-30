@@ -2,7 +2,7 @@
   "author": "Kevin Whitman (https://github.com/keverw)",
   "name": "node_cloudflare",
   "description": "A simple module to check if CloudFlare is connecting and get the real IP address.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "IP Address",
     "CIDR",
@@ -21,7 +21,7 @@
 	"proxy"
   ],
   "dependencies": {
-    "range_check": "1.x"
+    "range_check": "2.x"
   },
   "repository": {
     "type": "git",
